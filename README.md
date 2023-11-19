@@ -1,4 +1,4 @@
-# decode5
+# Decode5
 Dekodierer von 5-Ton-Folgen und Sirenensignalen
 
 ---
