@@ -1,0 +1,4 @@
+colorama==0.4.6
+numpy==1.23.5
+PyAudio==0.2.11
+sounddevice==0.4.3
