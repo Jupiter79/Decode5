@@ -17,3 +17,10 @@ Das Programm erkennt automatisch die jeweilige 5-Ton-Folge und das Sirenensignal
 ### python index.py --devices
 Gibt eine Übersicht der abgeschlossenen Audio-Geräte.
 Es muss zwingend ein Input-Gerät ausgewählt werden. (Am Ende muss 1 in oder 2 in stehen)
+
+## Credit / Lizens
+Folgende Lizens wird angewandt: https://creativecommons.org/licenses/by-sa/3.0/deed.en#
+
+Ein besonderer Dank gebührt @mboehn (https://github.com/mboehn/py5mon) für die Erstellung der Grund-Funktionalität.
+Die grundlegende Audio-Erkennung wurde fast nicht verändert.
+Aber es wurden einige Funktionalitäten hinzugefügt, beispielsweise die Erkennung des Sirenensignals.
