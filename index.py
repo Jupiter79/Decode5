@@ -103,6 +103,9 @@ def changeCheckingSignal(value):
             signale[property][0] = 0
 
 def handleAlarm(tone, typ):
+    global toneConfirmed
+    
+    toneConfirmed = False
     print("\033[1A" + Fore.GREEN + tone + Fore.WHITE + " -> " + signale[typ][1] + typ)
 
 
