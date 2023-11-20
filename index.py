@@ -16,6 +16,7 @@ NOISE_THRESHOLD = 0.05
 # Geräuschschwelle für den Noise Filter
 
 # Einstellungen
+
 if len(sys.argv) > 1 and sys.argv[1] == "--devices":
     print(sd.query_devices())
     sys.exit()
@@ -118,6 +119,10 @@ def cooldown(value):
     if value is True:
         threading.Timer(COOLDOWN, cooldown, args=(False,)).start()
 
+def noSignalFound():
+    if detectSignal:
+        print("\033[1A" + Fore.GREEN + tone + Fore.RED + "!")
+
 def printtrain(newtrain):
     global lastTone
     global toneCount
@@ -136,6 +141,8 @@ def printtrain(newtrain):
         else:
             print("\033[1A" + Fore.GREEN + tone + Fore.RED + "!")
             toneConfirmed = False
+
+    threading.Timer(5, noSignalFound).start()
 
     if newtrain[0] is not None and detectionCooldown is False:
         cooldown(True)
@@ -173,9 +180,12 @@ def detectSignal(frequency):
 
     for property in signale:
         value = signale[property][0]
+
         if value > timespersecond * 1.2:
             changeCheckingSignal(False)
             handleAlarm(alarmTone, property)
+
+    threading.Timer(4, changeCheckingSignal, args=(False,)).start()
 
 def applyNoiseFilter(indata):
     global NOISE_THRESHOLD
