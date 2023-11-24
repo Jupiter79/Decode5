@@ -5,6 +5,7 @@ Dekodierer von 5-Ton-Folgen und Sirenensignalen
 ## Voraussetzungen
 - Windows als Betriebssystem
 - Python3 installiert
+- Bei Web-Version keine
 
 ## Installation
 ### Web-Version NEU
