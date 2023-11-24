@@ -220,14 +220,14 @@
 
                 return;
             }
-
+9
             let element = $(`#tones [data-type="${type}"]`);
 
             if (!detectSignal || (detectSignal && !isDigit)) {
                 element.addClass("active");
 
                 setTimeout(() => {
-                    if (!detectSignal) element.removeClass("active");
+                    if (!detectSignal || !isDigit) element.removeClass("active");
                 }, isDigit ? 60 : 1);
             }
         }
