@@ -18,12 +18,12 @@ const TONES = {
 }
 
 const SIGNALS = {
-    "Feueralarm": [1240, 0],
-    "Probealarm": [1860, 0],
-    "Zivilschutzalarm": [825, 0],
-    "Zivilschutzwarnung": [2280, 0],
-    "Zivilschutzentwarnung": [1010, 0],
-    "Stiller Alarm": [2600, 0]
+    "Feueralarm": [1240, 0, "red"],
+    "Probealarm": [1860, 0, "cyan"],
+    "Zivilschutzalarm": [825, 0, "magenta"],
+    "Zivilschutzwarnung": [2280, 0, "yellow"],
+    "Zivilschutzentwarnung": [1010, 0, "lime"],
+    "Stiller Alarm": [2600, 0, "orange"]
 }
 
 $(document).ready(() => addDisplayingElements());
@@ -194,10 +194,14 @@ function colorType(type, isDigit, alert = false) {
     let element = $(`#tones [data-type="${type}"]`);
 
     if (!detectSignal || (detectSignal && !isDigit)) {
-        element.addClass("active");
+        if (isDigit) element.addClass("active");
+        else element.css("background-color", SIGNALS[type][2]);
 
         setTimeout(() => {
-            if (!detectSignal || !isDigit) element.removeClass("active");
+            if (!detectSignal || !isDigit) {
+                if (isDigit) element.removeClass("active");
+                else element.css("background-color", "unset");
+            }
         }, isDigit ? 60 : 1);
     }
 }
