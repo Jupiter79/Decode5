@@ -7,6 +7,10 @@ Dekodierer von 5-Ton-Folgen und Sirenensignalen
 - Python3 installiert
 
 ## Installation
+### Web-Version NEU
+[Zur Webversion](https://jupiter79.github.io/Decode5/web/)
+
+### Python-Version
 - Starten der install_requirements.bat um die erforderlichen Libraries zu installieren
 - Starten der start.bat
 
