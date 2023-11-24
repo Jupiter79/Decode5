@@ -1,5 +1,6 @@
 // SETTINGS
-const TOLERANCE = 20;
+const TOLERANCE_DIGITS = 20;
+const TOLERANCE_SIGNALS = 50;
 const SIGNAL_TONE_REQUIRED_SECONDS = 2;
 
 const TONES = {
@@ -77,7 +78,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
             Object.entries(SIGNALS).forEach(x => {
                 let signalFrequency = SIGNALS[x[0]][0];
 
-                if (frequency - TOLERANCE <= signalFrequency && frequency + TOLERANCE >= signalFrequency) {
+                if (frequency - TOLERANCE_SIGNALS <= signalFrequency && frequency + TOLERANCE_SIGNALS >= signalFrequency) {
                     if (detectSignal) SIGNALS[x[0]][1]++;
 
                     colorType(x[0], false);
@@ -93,7 +94,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 
 
             Object.entries(TONES).forEach(x => {
-                if (frequency - TOLERANCE <= x[1] && frequency + TOLERANCE >= x[1]) {
+                if (frequency - TOLERANCE_DIGITS <= x[1] && frequency + TOLERANCE_DIGITS >= x[1]) {
                     if (x[0] != lastTone) {
                         tone_List.push(x[0] != "R" ? x[0] : tone_List[tone_List.length - 1]);
 
