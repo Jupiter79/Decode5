@@ -1,0 +1,13 @@
+#tones {
+    max-width: 80%;
+    width: 800px;
+}
+
+#tones>.row>.col {
+    border: 1px solid black;
+}
+
+#tones>.row .active {
+    background: red;
+    color: white;
+}
