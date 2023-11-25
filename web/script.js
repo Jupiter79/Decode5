@@ -34,8 +34,9 @@ let frames = 2048;
 let lastTone, cycleDuration;
 let tone_List = [];
 let detectSignal = false;
+let lastToneDetected;
 
-
+let count = 0;
 navigator.mediaDevices.getUserMedia({ audio: true })
     .then(function (stream) {
         // Create an audio context
@@ -72,7 +73,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
             var frequency = maxIndex * (audioContext.sampleRate / analyser.fftSize);
 
             // Display the frequency
-            document.getElementById('frequencyDisplay').innerText = 'Frequency: ' + frequency.toFixed(2) + ' Hz';
+            document.getElementById('frequencyDisplay').innerText = 'Frequenz: ' + frequency.toFixed(2) + ' Hz';
 
 
             Object.entries(SIGNALS).forEach(x => {
@@ -86,6 +87,15 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 
                 if (detectSignal && SIGNALS[x[0]][1] >= SIGNAL_TONE_REQUIRED_SECONDS * 2 / cycleDuration) {
                     console.log(`SIGNAL: ${x[0]}`);
+
+                    count++;
+
+                    $("#alarmList #list").append(`
+                    <tr>
+                    <th scope="row">${count}</th>
+                    <td>${lastToneDetected}</td>
+                    <td>${x[0]}</td>
+                    </tr>`)
 
                     resetSignalDetection();
                 }
@@ -135,6 +145,7 @@ navigator.mediaDevices.getUserMedia({ audio: true })
 
 function alarm() {
     console.log(`ALARM: ${tone_List.join("")}`);
+    lastToneDetected = tone_List.join("");
 
     detectSignal = true;
 
