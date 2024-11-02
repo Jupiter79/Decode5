@@ -23,3 +23,13 @@ body {
     width: 800px;
     max-width: 90%;
 }
+
+.digits, .signals {
+    gap: 2px;
+}
+
+.signals > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
